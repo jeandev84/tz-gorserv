@@ -10,3 +10,5 @@ $ composer install
 ```php 
 $ php server
 ```
+
+Источники для генерации текста : https://ru.lipsum.com/

@@ -4,6 +4,7 @@ namespace Gorserv\FileSystem;
 
 use Gorserv\FileSystem\Exception\StreamException;
 
+
 /**
  * @Stream
 */
@@ -30,20 +31,19 @@ class Stream
      /**
       * @param int $length
       * @param string $mode
-      * @return void
-      * @throws StreamException
+      * @return string|false
      */
-     public function read(int $length, string $mode = 'r')
+     public function read(int $length = 4096, string $mode = 'r')
      {
-           $fp = @fopen($this->path, $mode);
+           $stream = fopen($this->path, $mode);
 
-           if (! feof($fp)) {
-               throw new StreamException();
-           }
+           $content = fread($stream, $length);
 
-           $content = fgets($fp, 4096)
-           fclose($fp);
+           fclose($stream);
+
+           return $content;
      }
+
 
 
      public function write() {}

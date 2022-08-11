@@ -20,7 +20,7 @@ class WordService
       */
       public function getCountOfMatchedWords(BookInterface $book, DictionaryInterface $dictionary): int
       {
-           $searchWords = $this->getPatternSearchWords($dictionary->getWords());
+           $searchWords = $this->getPatternOfSearchWords($dictionary->getWords());
 
            preg_match_all($searchWords, $book->getText(), $matches);
 
@@ -33,7 +33,7 @@ class WordService
        * @param array $words
        * @return string
       */
-      protected function getPatternSearchWords(array $words): string
+      protected function getPatternOfSearchWords(array $words): string
       {
           $searchWords = array_map(function ($value) {
                  return preg_quote(trim($value));

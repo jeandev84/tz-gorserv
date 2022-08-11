@@ -1,11 +1,14 @@
 {
-    "name": "yao/gorsev",
+    "name": "gorserv/library",
     "description": "Simple library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Gorserv\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "authors": [
         {
