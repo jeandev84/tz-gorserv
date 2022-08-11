@@ -16,17 +16,37 @@ class WordService
       /**
        * @param BookInterface $book
        * @param DictionaryInterface $dictionary
-       * @return int
+       * @return array
       */
-      public function getCountOfMatchedWords(BookInterface $book, DictionaryInterface $dictionary): int
+      public function getCountListOfMatchedWords(BookInterface $book, DictionaryInterface $dictionary): array
       {
-           $searchWords = $this->getPatternOfSearchWords($dictionary->getWords());
+           $wordCollection = [];
 
-           preg_match_all($searchWords, $book->getText(), $matches);
+           foreach ($dictionary->getWords() as $searchWord) {
+               preg_match_all('/'. $searchWord . '/', $book->getText(), $matches);
+               $wordCollection[$searchWord] = count($matches[0]);
+           }
 
-           return (! empty($matches[1]) ? count($matches[1]) : 0);
+           return $wordCollection;
+
       }
 
+
+
+
+      /**
+       * @param BookInterface $book
+       * @param DictionaryInterface $dictionary
+       * @return int
+     */
+     public function getAllCountOfMatchedWords(BookInterface $book, DictionaryInterface $dictionary): int
+     {
+        $searchWords = $this->getPatternOfSearchWords($dictionary->getWords());
+
+        preg_match_all($searchWords, $book->getText(), $matches);
+
+        return (! empty($matches[1]) ? count($matches[1]) : 0);
+    }
 
 
       /**

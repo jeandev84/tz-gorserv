@@ -3,6 +3,7 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+echo "<h3>Количество вхождений в книге каждого слова из словаря </h3>";
 
 try {
 
@@ -13,9 +14,9 @@ try {
 
     $dictionary = new \Gorserv\Library\Dictionary($dictionaryWords);
 
-    echo sprintf('Количество вхождений в книге каждого слова из словаря : %d',
-         wordService()->getCountOfMatchedWords($book, $dictionary)
-    );
+    foreach (wordService()->getCountListOfMatchedWords($book, $dictionary) as $word => $count) {
+         echo sprintf('%s : %d <br>', $word, $count);
+    }
 
 
 } catch (Exception $e) {
