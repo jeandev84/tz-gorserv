@@ -1,0 +1,17 @@
+{
+    "name": "yao/gorsev",
+    "description": "Simple library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Gorserv\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jeandev84",
+            "email": "jeandev84@yahoo.com"
+        }
+    ],
+    "require": {}
+}
