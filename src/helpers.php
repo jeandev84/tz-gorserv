@@ -34,3 +34,14 @@ if (! function_exists('wordService')) {
 }
 
 
+
+/**
+ * @param array $countLists
+ * @return void
+*/
+function displayCountList(array $countLists)
+{
+    foreach ($countLists as $word => $count) {
+        echo sprintf('%s : %d <br>', $word, $count);
+    }
+}

@@ -20,15 +20,14 @@ class WordService
       */
       public function getCountListOfMatchedWords(BookInterface $book, DictionaryInterface $dictionary): array
       {
-           $wordCollection = [];
+           $wordCountCollection = [];
 
            foreach ($dictionary->getWords() as $searchWord) {
                preg_match_all('/'. $searchWord . '/', $book->getText(), $matches);
-               $wordCollection[$searchWord] = count($matches[0]);
+               $wordCountCollection[$searchWord] = count($matches[0]);
            }
 
-           return $wordCollection;
-
+           return $wordCountCollection;
       }
 
 

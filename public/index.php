@@ -14,9 +14,9 @@ try {
 
     $dictionary = new \Gorserv\Library\Dictionary($dictionaryWords);
 
-    foreach (wordService()->getCountListOfMatchedWords($book, $dictionary) as $word => $count) {
-         echo sprintf('%s : %d <br>', $word, $count);
-    }
+    $matchedWords = wordService()->getCountListOfMatchedWords($book, $dictionary);
+
+    displayCountList($matchedWords);
 
 
 } catch (Exception $e) {
